@@ -1,0 +1,220 @@
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+:root{
+    --main-color: rgb(240, 255, 255);
+    --second-color: rgb(0, 0, 0);
+    --third-color: rgb(37, 37, 37);
+    --fourth-color: rgb(126, 126, 126);
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+nav {
+    background: var(--main-color);
+    height: 100px;
+    width: 100%;
+}
+
+div.logo {
+    position: absolute;
+    padding-left: 10px;
+}
+
+div.logo img {
+    padding: 20px;
+    height: 100px;
+}
+
+nav ul {
+    float: right;
+    margin-right: 20px;
+}
+
+nav ul li {
+    display: inline-block;
+    line-height: 100px;
+    margin: 0 5px;
+}
+
+nav ul li a {
+    color: var(--second-color);
+    font-size: 16px;
+    padding: 10px 10px;
+    border-radius: 3px;
+    text-transform: uppercase;
+}
+
+a.active, a:hover {
+    color: var(--main-color);
+    background: var(--second-color);
+    transition: .5s;
+}
+
+.checkbtn {
+    font-size: 30px;
+    color: black;
+    float: right;
+    line-height: 100px;
+    margin-right: 40px;
+    cursor: pointer;
+    display: none;
+}
+
+#check {
+    display: none;
+}
+
+
+/* Centraliza o wrapper horizontal e verticalmente */
+.container-wrapper {
+    width: 100%;
+    display: grid;
+    place-items: center; 
+    background: var(--main-color);
+}
+.wrapper {
+    padding: 35px;
+    position: relative;
+    overflow-x: hidden;
+    max-width: 1000px;
+    background: var(--main-color);
+    border-radius: 13px;
+  }
+  .wrapper .icon {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centraliza o ícone verticalmente */
+    z-index: 1;
+    background: var(--main-color);
+  }
+  .icon:first-child {
+    left: 0;
+    background: linear-gradient(90deg, var(--main-color) 70%, transparent);
+  }
+  .icon:last-child {
+    right: 0;
+    justify-content: flex-end;
+    background: linear-gradient(-90deg, var(--main-color) 70%, transparent);
+  }
+  .icon i {
+    width: 55px;
+    height: 55px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    text-align: center;
+    line-height: 55px;
+    border-radius: 50%;
+  }
+
+  .icon:first-child i {
+    margin-left: 15px;
+  } 
+  .icon:last-child i {
+    margin-right: 15px;
+  } 
+  .wrapper .tabs-box {
+    display: flex;
+    gap: 12px;
+    list-style: none;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+  .tabs-box.dragging {
+    scroll-behavior: auto;
+    cursor: grab;
+  }
+  .tabs-box .tab {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    overflow: hidden;
+    flex-shrink: 0; /* Impede que os elementos encolham */
+}
+
+.tab img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%; 
+    filter: grayscale(100%);
+}
+  .tabs-box .tab:hover{
+    background: #efedfb;
+  }
+  .tabs-box.dragging .tab {
+    user-select: none;
+    pointer-events: none;
+  }
+  .tabs-box .tab.active{
+    color: #fff;
+    background: #5372F0;
+    border-color: transparent;
+  }
+
+
+
+/* Media Queries */
+@media (max-width: 952px) {
+    div.logo {
+        padding-left: 20px;
+    }
+    nav ul li a {
+        color: azure;
+        font-size: 16px;
+    }
+
+    nav ul li a:hover{
+        color: black;
+    }
+}
+@media (max-width: 858px) {
+    .checkbtn {
+        display: block;
+    }
+    ul {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background: #2c3e50;
+        top: 100px;
+        left: -100%;
+        text-align: center;
+        transition: all .5s;
+        z-index: 1000;
+        overflow-y: auto; 
+    }
+    nav ul li {
+        display: block;
+        margin: 50px 0;
+        line-height: 30px;
+    }
+    nav ul li a {
+        font-size: 20px;
+    }
+    a:hover, a.active {
+        background: none;
+        color: var(--second-color);
+    }
+    #check:checked ~ ul {
+        left: 0;
+    }
+    .wrapper {
+        display: none;
+    }
+}
